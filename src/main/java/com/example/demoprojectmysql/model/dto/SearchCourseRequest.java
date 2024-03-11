@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class SearchCourseRequest extends BaseRequest {
-    private String name;
+    private String courseName;
     private int minPrice;
     private int maxPrice;
     private CourseStatus status;
