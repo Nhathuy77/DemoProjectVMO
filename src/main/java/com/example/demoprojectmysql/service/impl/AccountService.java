@@ -8,8 +8,13 @@ import com.example.demoprojectmysql.repository.AccountRepository;
 import com.example.demoprojectmysql.service.IAccountService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +66,18 @@ public class AccountService implements IAccountService {
     public Account delete(int id) {
         accountRepository.deleteById(id);
         return null;
+    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<Account> accountOptional = accountRepository.findByUsername(username);
+        if (accountOptional.isEmpty()){ // Nếu username không tồn tại -> bắn ra lỗi
+            throw new UsernameNotFoundException(username);
+        }
+        Account account = accountOptional.get();
+        // Tạo ra đối tượng UserDetails ( là đối tượng mà hàm loadUserByUsername muốn trả về) từ account
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(account.getRole());
+        return new User(account.getUsername(), account.getPassword(), authorities);
     }
 
 }

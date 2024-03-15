@@ -1,7 +1,13 @@
 package com.example.demoprojectmysql.model.entity;
 
 
-//implements GrantedAuthority: đang coi đối tượng enum Role là 1 quyển tỏng spring security
-public enum Role{
-    USER, ADMIN;
+import org.springframework.security.core.GrantedAuthority;
+
+public enum Role implements GrantedAuthority {// Biến thuộc tính này dùng để làm phân quyền trong Security
+    USER, MANAGER, ADMIN;
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }

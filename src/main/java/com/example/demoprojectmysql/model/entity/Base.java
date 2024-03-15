@@ -1,6 +1,8 @@
 package com.example.demoprojectmysql.model.entity;
 
 import lombok.Data;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -23,13 +25,17 @@ public class Base {
 
     @PrePersist
     public void onPrePersist() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
         this.createDate = new Date();
-        this.createBy = "Huy Create";
+        this.createBy = username;
     }
 
     @PreUpdate
     public void onPreUpdate() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
         this.updateDate = new Date();
-        this.createBy = "Huy Update";
+        this.createBy = username;
     }
 }
