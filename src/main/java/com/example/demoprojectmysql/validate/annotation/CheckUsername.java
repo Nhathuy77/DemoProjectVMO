@@ -2,7 +2,6 @@ package com.example.demoprojectmysql.validate.annotation;
 
 
 import com.example.demoprojectmysql.validate.validator.CheckUsernameValidator;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;

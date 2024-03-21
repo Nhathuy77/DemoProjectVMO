@@ -1,13 +1,18 @@
 package com.example.demoprojectmysql.model.entity;
 
-import lombok.Data;
+import com.example.demoprojectmysql.model.dto.AccountCreateDTO;
+import com.example.demoprojectmysql.model.dto.AccountStatus;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "ACCOUNT2")
-@Data
+@Getter // Sinh ra các method getter
+@Setter// Sinh ra các method setter
+@NoArgsConstructor // Sinh ra hàm khởi tạo không tham số
+@AllArgsConstructor // Sinh ra hàm khởi tạo có tất cả các tham số
 public class Account extends Base{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +44,12 @@ public class Account extends Base{
     @Column(name = "EMAIL", length = 100, unique = true, nullable = false)
     private String email;
 
+    @Column(name = "STATUS")
+    @Enumerated(EnumType.STRING)
+    private AccountStatus accountStatus;
 
-
+    public Account(AccountCreateDTO createDto) {
+        this.username = createDto.getUsername();
+    }
 
 }

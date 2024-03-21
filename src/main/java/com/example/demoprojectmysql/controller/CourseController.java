@@ -5,6 +5,7 @@ import com.example.demoprojectmysql.model.entity.Course;
 import com.example.demoprojectmysql.service.impl.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
     public class CourseController {
         @Autowired
         private CourseService courseService;
+
 
         @GetMapping("/get-all")
         public List<Course> getAll() {
@@ -24,6 +26,7 @@ import java.util.List;
             return courseService.getById(id);
         }
 
+        @PreAuthorize("hasAuthority('ADMIN')")
         @PostMapping("/create")
         public Course create(@RequestBody CourseCreateDTO dto) {
             return courseService.create(dto);
@@ -34,11 +37,13 @@ import java.util.List;
             return courseService.search(request);
         }
 
+        @PreAuthorize("hasAuthority('ADMIN')")
         @PutMapping("/update")
         public Course update(@RequestBody CourseUpdateDTO dto) {
             return courseService.update(dto);
         }
 
+        @PreAuthorize("hasAuthority('ADMIN')")
         @DeleteMapping("/{id}")
         public void delete(@PathVariable int id) {
             courseService.delete(id);

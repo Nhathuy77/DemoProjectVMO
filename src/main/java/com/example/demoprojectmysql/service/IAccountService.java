@@ -2,9 +2,7 @@ package com.example.demoprojectmysql.service;
 
 import com.example.demoprojectmysql.model.dto.AccountCreateDTO;
 import com.example.demoprojectmysql.model.dto.AccountUpdateDTO;
-import com.example.demoprojectmysql.model.dto.BaseRequest;
 import com.example.demoprojectmysql.model.entity.Account;
-import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;

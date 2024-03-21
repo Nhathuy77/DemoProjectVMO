@@ -4,7 +4,6 @@ package com.example.demoprojectmysql.validate.validator;
 import com.example.demoprojectmysql.repository.AccountRepository;
 import com.example.demoprojectmysql.validate.annotation.CheckUsername;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
