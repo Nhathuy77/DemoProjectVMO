@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration // kết hợp với @Bean để tạo thành 1 bean trong spring IOC
 @EnableWebSecurity
@@ -18,6 +19,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
 
 
     @Override
@@ -31,7 +34,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
 // config những API ko cần xác thực
-                .antMatchers("api/not-authenticated","/api/v1/account/create").permitAll()
+                .antMatchers("api/not-authenticated","/api/v1/auth/login-jwt").permitAll()
 
 
 // Config những API phải có Authority là ADMIN thì mới được truy cập
@@ -50,6 +53,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 // tắt tính năng Cross-Site Request Forgery (CSRF) trong Spring Security.
                 .and().cors().and().csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
 

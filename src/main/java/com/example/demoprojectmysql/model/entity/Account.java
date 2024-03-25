@@ -1,7 +1,6 @@
 package com.example.demoprojectmysql.model.entity;
 
 import com.example.demoprojectmysql.model.dto.AccountCreateDTO;
-import com.example.demoprojectmysql.model.dto.AccountStatus;
 import lombok.*;
 
 import javax.persistence.*;

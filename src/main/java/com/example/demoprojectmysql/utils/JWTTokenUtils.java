@@ -3,7 +3,7 @@ package com.example.demoprojectmysql.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.example.demoprojectmysql.model.dto.AccountLoginResponse;
-import com.example.demoprojectmysql.model.dto.AccountStatus;
+import com.example.demoprojectmysql.model.entity.AccountStatus;
 import com.example.demoprojectmysql.model.dto.AppExceptionDto;
 import com.example.demoprojectmysql.model.entity.Account;
 import com.example.demoprojectmysql.model.entity.Role;

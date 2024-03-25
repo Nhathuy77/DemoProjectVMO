@@ -25,6 +25,11 @@ public class CustomException extends RuntimeException {
         this.message = errorResponseEnum.message;
         this.timestamp = Instant.now();
     }
+    public CustomException(int status, String message, String path) {
+        this.status = status;
+        this.message = message;
+        this.path = path;
+    }
 
     }
 

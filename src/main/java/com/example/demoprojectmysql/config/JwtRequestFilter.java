@@ -32,9 +32,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         // Lấy token từ api (request)
         String token = httpServletRequest.getHeader(AUTHORIZATION);
         String request = httpServletRequest.getRequestURI();
-        if (StringUtils.containsAnyIgnoreCase(request, "/api/v1/auth/login-jwt")
+        if (StringUtils.containsAnyIgnoreCase(request, "/api/v1/auth/")
                 || StringUtils.containsAnyIgnoreCase(request, "/api/v1/account/create")
-                || StringUtils.containsAnyIgnoreCase(request, "/api/v1/product/search")
+                || StringUtils.containsAnyIgnoreCase(request, "/api/v1/course/search")
                 || StringUtils.containsAnyIgnoreCase(request, "/swagger-ui")
                 || StringUtils.containsAnyIgnoreCase(request, "/swagger-resources")
                 || StringUtils.containsAnyIgnoreCase(request, "/v3/api-docs")) {
