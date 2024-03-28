@@ -1,7 +1,7 @@
 package com.example.demoprojectmysql.service.impl;
 
-
-import com.example.demoprojectmysql.model.dto.BaseRequest;
+import com.example.demoprojectmysql.config.exception.CustomException;
+import com.example.demoprojectmysql.config.exception.ErrorResponseEnum;
 import com.example.demoprojectmysql.model.dto.CourseCreateDTO;
 import com.example.demoprojectmysql.model.dto.CourseUpdateDTO;
 import com.example.demoprojectmysql.model.dto.SearchCourseRequest;
@@ -46,14 +46,18 @@ public class CourseService implements ICourseService {
 
     @Override
     public Course getById(int id) {
-        Optional<Course> optionalAccount = courserepository.findById(id);
-        if (optionalAccount.isPresent()){
-            return optionalAccount.get();
+        Optional<Course> optionalCourse = courserepository.findById(id);
+        if (optionalCourse.isPresent()){
+            return optionalCourse.get();
         }
         return null;
     }
     @Override
     public Course create(CourseCreateDTO dto) {
+        boolean checkCourseName = courserepository.existsByCourseName(dto.getCourseName());
+        if(checkCourseName){
+            throw new CustomException(ErrorResponseEnum.COURSE_NAME_EXISTED);
+        }
         Course course = new Course();
         BeanUtils.copyProperties(dto, course);
         return courserepository.save(course);

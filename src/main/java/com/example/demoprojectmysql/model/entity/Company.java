@@ -1,13 +1,17 @@
 package com.example.demoprojectmysql.model.entity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "COMPANY")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Company extends Base{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +33,5 @@ public class Company extends Base{
     @Column(name = "EMAIL", length = 100, unique = true, nullable = false)
     private String email;
 
+    }
 
-
-}

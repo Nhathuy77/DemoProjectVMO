@@ -28,8 +28,8 @@ public class Account extends Base{
     @Column(name = "PASSWORD", length = 100, nullable = false)
     private String password;
 
-    @Column(name = "DATE_OF_BIRTH")
-    private Date dateOfBirth;
+//    @Column(name = "DATE_OF_BIRTH")
+//    private Date dateOfBirth;
 
     @Column(name = "ADDRESS", length = 200)
     private String address;

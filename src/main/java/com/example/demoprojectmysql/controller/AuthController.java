@@ -59,22 +59,6 @@ public class AuthController {
         mailSenderService.sendMessageWithAttachment(account.getEmail(), subject, content);
         return accountRepository.save(account);
     }
-//    @PostMapping("/login-v2")
-//    public AccountLoginResponse loginV2(@RequestParam String username, @RequestParam String password){
-//        Optional<Account> accountOptional = accountRepository.findByUsername(username);
-//        if (accountOptional.isEmpty()){
-//            throw new CustomException(ErrorResponseEnum.LOGIN_USERNAME_NOT_EXISTED);
-//        }
-//        Account account = accountOptional.get();
-//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//        boolean checkPassword = passwordEncoder.matches(password, account.getPassword());
-//        if (!checkPassword){
-//            throw new CustomException(ErrorResponseEnum.LOGIN_PASSWORD_FALSE);
-//        }
-//        AccountLoginResponse response = new AccountLoginResponse();
-//        BeanUtils.copyProperties(account, response);
-//        return response;
-//    }
 
     @PostMapping("/login-jwt")
     public AccountLoginResponse loginJWT(@RequestParam String username,@RequestParam String password){

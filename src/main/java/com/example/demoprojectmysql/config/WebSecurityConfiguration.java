@@ -36,12 +36,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 // config những API ko cần xác thực
                 .antMatchers("api/not-authenticated","/api/v1/auth/login-jwt").permitAll()
 
-
 // Config những API phải có Authority là ADMIN thì mới được truy cập
                  //.antMatchers(HttpMethod.GET,"/api/v1/account/*").hasAuthority("ADMIN")
 
 // Config những API phải có Authority là ADMIN hoặc User thì mới được truy cập
-                .antMatchers("api/admin-or-user").hasAnyAuthority("ADMIN", "User")
+                .antMatchers("api/admin-or-user").hasAnyAuthority("ADMIN", "USER")
 
 
                 .anyRequest().authenticated()// Những đường dẫn còn lại cần được xác thực

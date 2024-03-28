@@ -30,9 +30,9 @@ public class CompanyService implements ICompanyService {
 
     @Override
     public Company getById(int id) {
-        Optional<Company> optionalAccount = companyrepository.findById(id);
-        if (optionalAccount.isPresent()){
-            return optionalAccount.get();
+        Optional<Company> optionalCompany = companyrepository.findById(id);
+        if (optionalCompany.isPresent()){
+            return optionalCompany.get();
         }
         return null;
     }

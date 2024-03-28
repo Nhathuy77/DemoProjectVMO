@@ -15,7 +15,7 @@ public class Course extends Base{
     private int id;
 
     @Column(name = "NAME", length = 50, unique = true, nullable = false)
-    private String name;
+    private String courseName;
 
     @Column(name = "PRICE", nullable = false)
     private int price;

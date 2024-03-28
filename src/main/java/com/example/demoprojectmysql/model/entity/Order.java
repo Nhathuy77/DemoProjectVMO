@@ -13,18 +13,18 @@ public class Order extends Base{
     @Column(name = "ID")
     private int id;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "ORDER_BY") // Tên cột của khoá ngoại trong BD
-    private Account account;
+    @Column(name = "ORDER_STATUS")
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "COURSE_ID") // Tên cột của khoá ngoại trong BD
-    private Course course;
-
-    @Column(name = "QUANTITY")
+    @Column(name = "`QUANTITY`")
     private int quantity;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ORDER_STATUS")
-    private OrderStatus orderStatus;
+    @ManyToOne
+    @JoinColumn(name = "ACCOUNT_ID")
+    private Account account;
+
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "COURSE_ID")
+    private Course course;
 }
