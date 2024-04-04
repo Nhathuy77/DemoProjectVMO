@@ -2,6 +2,8 @@ package com.example.demoprojectmysql.config;
 
 import com.example.demoprojectmysql.model.dto.AccountLoginResponse;
 import com.example.demoprojectmysql.utils.JWTTokenUtils;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Slf4j
+@RequiredArgsConstructor
 public class JwtRequestFilter extends OncePerRequestFilter {
     private static final String AUTHORIZATION = "Authorization";
 

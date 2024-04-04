@@ -51,4 +51,6 @@ public class Account extends Base{
         this.username = createDto.getUsername();
     }
 
+    public Account(int id, String nhathuy1, String user, String password, String address, String full_name, String phone, String email, String accountStatus) {
+    }
 }

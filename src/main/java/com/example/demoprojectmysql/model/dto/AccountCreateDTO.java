@@ -11,15 +11,13 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccountCreateDTO {
-//    private int id;
-@NotBlank(message = "Tên người dùng không được để trống")
+    //    private int id;
+    @NotBlank(message = "Tên người dùng không được để trống")
     private String username;
     private String password;
     private String fullName;
     private String email;
     private String information;
-
-
 
 
 }

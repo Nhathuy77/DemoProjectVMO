@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "`ORDER`")
 @Data
-public class Order extends Base{
+public class Order extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

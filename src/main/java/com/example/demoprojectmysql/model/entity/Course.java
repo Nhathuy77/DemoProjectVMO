@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "COURSE")
 @Data
-public class Course extends Base{
+public class Course extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -31,8 +31,6 @@ public class Course extends Base{
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "COMPANY_ID") // Tên cột của khoá ngoại trong BD
     private Company company;
-
-
 
 
 }
