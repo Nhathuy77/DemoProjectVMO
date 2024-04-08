@@ -2,7 +2,6 @@ package com.example.demoprojectmysql.controller;
 
 import com.example.demoprojectmysql.model.dto.CompanyCreateDTO;
 import com.example.demoprojectmysql.model.dto.CompanyUpdateDTO;
-import com.example.demoprojectmysql.model.entity.Account;
 import com.example.demoprojectmysql.model.entity.Company;
 import com.example.demoprojectmysql.service.impl.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package com.example.demoprojectmysql.service.impl;
 
-
 import com.example.demoprojectmysql.model.entity.Customer;
 import com.example.demoprojectmysql.repository.CustomerRepository;
 import lombok.AllArgsConstructor;

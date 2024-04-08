@@ -28,7 +28,6 @@ public class AccountController {
 
     public List<Account> getAll() {
         logger.info("Thông tin account");
-//        Log.info("Thông tin account");
         log.info("thông tin ");
         return accountService.getAll();
     }

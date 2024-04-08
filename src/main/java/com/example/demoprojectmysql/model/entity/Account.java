@@ -28,8 +28,8 @@ public class Account extends Base{
     @Column(name = "PASSWORD", length = 100, nullable = false)
     private String password;
 
-//    @Column(name = "DATE_OF_BIRTH")
-//    private Date dateOfBirth;
+    @Column(name = "DATE_OF_BIRTH")
+    private Date dateOfBirth;
 
     @Column(name = "ADDRESS", length = 200)
     private String address;
@@ -49,8 +49,5 @@ public class Account extends Base{
 
     public Account(AccountCreateDTO createDto) {
         this.username = createDto.getUsername();
-    }
-
-    public Account(int id, String nhathuy1, String user, String password, String address, String full_name, String phone, String email, String accountStatus) {
     }
 }

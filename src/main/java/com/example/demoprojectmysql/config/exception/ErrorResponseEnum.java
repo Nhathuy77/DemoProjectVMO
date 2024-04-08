@@ -8,6 +8,7 @@ public enum ErrorResponseEnum {
     USERNAME_EXISTED(400, "Username đã tồn tại!"),
     LOGIN_USERNAME_NOT_EXISTED(401, "Username không tồn tại!"),
     ACCOUNT_NOT_ACTIVE(403, "Tài khoản của bạn chưa được kích hoạt. Kiểm tra mail để kích hoạt tài khoản!"),
+    ERROR_TELEPHONE(400, "Telephone sai"),
     LOGIN_PASSWORD_FALSE(401, "Password sai!");
 
     public final int status;
