@@ -4,9 +4,7 @@ package com.example.demoprojectmysql.controller;
 import com.example.demoprojectmysql.model.dto.AccountCreateDTO;
 import com.example.demoprojectmysql.model.dto.AccountUpdateDTO;
 import com.example.demoprojectmysql.model.entity.Account;
-import com.example.demoprojectmysql.model.entity.Log;
 import com.example.demoprojectmysql.service.impl.AccountService;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@Slf4j
 @RestController
 @RequestMapping("api/v1/account")
 @CrossOrigin("*")
@@ -27,8 +24,6 @@ public class AccountController {
     @GetMapping("/get-all")
 
     public List<Account> getAll() {
-        logger.info("Thông tin account");
-        log.info("thông tin ");
         return accountService.getAll();
     }
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -45,7 +40,6 @@ public class AccountController {
 
     @GetMapping("/{id}")
     public Account getById(@PathVariable int id) {
-        Log.info("Thông tin account id");
         return accountService.getById(id);
     }
 

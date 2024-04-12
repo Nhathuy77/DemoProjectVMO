@@ -51,7 +51,7 @@ import java.util.Set;
                     .apis(RequestHandlerSelectors.any())
                     .paths(PathSelectors.any())
                     .build()
-                    .groupName("Demo-VMO")
+                    .groupName("Demo-HUST")
                     //  Supported communication protocol set
                     .protocols(Set.of("https", "http"))
                     ;
@@ -64,10 +64,10 @@ import java.util.Set;
         private ApiInfo apiInfo() {
             return new ApiInfoBuilder()
                     .version("h.u.y")
-                    .title("VMO Demo Exam")
+                    .title("Final Project Exam")
                     .description("demo swagger for final exam")
-                    .contact(new Contact("VMO", null, "huyntn1@vmogroup.com"))
-                    .termsOfServiceUrl("http://localhost:8888/").termsOfServiceUrl("http://192.168.88.210:8080/")
+                    .contact(new Contact("HUST", null, "huyntn182584@hust.com"))
+                    .termsOfServiceUrl("http://localhost:7777/").termsOfServiceUrl("http://192.168.88.210:8080/")
                     .license("Apache 2.0")
                     .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0.html")
                     .build();
