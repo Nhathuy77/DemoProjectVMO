@@ -28,9 +28,5 @@ public class Course extends Base {
     @Enumerated(EnumType.STRING)
     private CourseType courseType;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "COMPANY_ID") // Tên cột của khoá ngoại trong BD
-    private Company company;
-
 
 }

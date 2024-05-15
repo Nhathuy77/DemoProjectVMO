@@ -9,7 +9,7 @@ public class CourseSpecification {
 
     public static Specification<Course> buildCondition(SearchCourseRequest request) {
         return Specification.where(buildConditionName(request))
-                .and(buildConditionProductType(request))
+                .and(buildConditionCourseType(request))
                 .and(buildConditionStatus(request))
                 .and(buildConditionPrice(request));
     }
@@ -31,7 +31,7 @@ public class CourseSpecification {
     public static Specification<Course> buildConditionStatus(SearchCourseRequest request){
         if (request.getStatus() != null){ //&& request.getStatus().size() > 0){
             return (root, query, cri) -> {
-                // Tạo điều kiện tìm kiếm với productType. ProductType sẽ là 1 trong các giá trị truyền vào
+                // Tạo điều kiện tìm kiếm với courseType. CourseType sẽ là 1 trong các giá trị truyền vào
                 return root.get("courseType").in(request.getStatus());
             };
         } else {
@@ -39,7 +39,7 @@ public class CourseSpecification {
         }
     }
 
-    public static Specification<Course> buildConditionProductType(SearchCourseRequest request){
+    public static Specification<Course> buildConditionCourseType(SearchCourseRequest request){
         if (request.getCourseType() != null){ //&& request.getStatus().size() > 0){
             return (root, query, cri) -> {
                 // Tạo điều kiện tìm kiếm với productType. ProductType sẽ là 1 trong các giá trị truyền vào

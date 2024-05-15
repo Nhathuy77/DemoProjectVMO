@@ -2,8 +2,8 @@ package com.example.demoprojectmysql.controller;
 
 import com.example.demoprojectmysql.config.exception.CustomException;
 import com.example.demoprojectmysql.config.exception.ErrorResponseEnum;
-import com.example.demoprojectmysql.model.dto.AccountCreateDTO;
 import com.example.demoprojectmysql.model.dto.AccountLoginResponse;
+import com.example.demoprojectmysql.model.dto.AccountRegisterDTO;
 import com.example.demoprojectmysql.model.entity.AccountStatus;
 import com.example.demoprojectmysql.model.entity.Account;
 import com.example.demoprojectmysql.model.entity.Role;
@@ -40,22 +40,22 @@ public class AuthController {
         }
 
     @PostMapping("/register")
-    public Account register(@RequestBody @Valid AccountCreateDTO createDto) {
-        if (accountRepository.existsByUsername(createDto.getUsername())) {
+    public Account register(@RequestBody @Valid AccountRegisterDTO registerDTO) {
+        if (accountRepository.existsByUsername(registerDTO.getUsername())) {
             throw new CustomException(ErrorResponseEnum.USERNAME_EXISTED);
         }
         Account account = new Account();
-        BeanUtils.copyProperties(createDto, account);
+        BeanUtils.copyProperties(registerDTO, account);
         account.setRole(Role.USER);
         account.setAccountStatus(AccountStatus.PENDING);
         // Mã hoá mật khẩu rồi lưu vào DB
-        String passwordEncoder = new BCryptPasswordEncoder().encode(createDto.getPassword());
+        String passwordEncoder = new BCryptPasswordEncoder().encode(registerDTO.getPassword());
         account.setPassword(passwordEncoder);
         // Thêm logic mail để kích hoạt tài khoản
         String subject = "KÍCH HOẠT TÀI KHOẢN!";
-        String api = "http://localhost:8888/api/v1/auth/active/" + account.getId();
+        String api = "http://localhost:7777/api/v1/auth/active/" + account.getId();
         String content = "<img src=\"https://hrchannels.com/Upload/avatar/20210302/170452847_vmo1.jpg\">\n" +
-                "<div>Bạn đã đăng ký tài khoản trên VMO. Để kích hoạt tài khoản, <a href=\""+ api +"\" target=\"_blank\">Click vào đây</a><div>";
+                "<div>Bạn đã đăng ký tài khoản trên CHICHI. Để kích hoạt tài khoản, <a href=\""+ api +"\" target=\"_blank\">Click vào đây</a><div>";
         mailSenderService.sendMessageWithAttachment(account.getEmail(), subject, content);
         return accountRepository.save(account);
     }
